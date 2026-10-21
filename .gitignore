@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+**/venv/
+**/.venv/
+.env
+.env.*
+!.env.example
+node_modules/
+**/node_modules/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.DS_Store
+data/

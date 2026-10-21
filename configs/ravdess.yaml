@@ -1,0 +1,47 @@
+# RAVDESS dataset configuration
+dataset:
+  name: ravdess
+  # Place dataset here: emotionai/data/ravdess/
+  # Expected layout: data/ravdess/Actor_01/*.wav ... Actor_24/*.wav
+  # Download from: https://zenodo.org/record/1188976
+  directory: data/ravdess
+
+# Preprocessing
+preprocessing:
+  sample_rate: 22050
+  n_mfcc: 40
+  n_fft: 2048
+  hop_length: 512
+  max_time_steps: 216
+  use_delta: true
+  use_delta2: true
+  min_duration: 0.5
+  max_duration: 10.0
+  silence_threshold_db: -60.0
+
+# Model
+model:
+  type: cnn_bilstm  # or cnn_baseline
+  cnn_channels: [64, 128]
+  lstm_hidden: 256
+  lstm_layers: 2
+  dropout: 0.3
+
+# Training
+training:
+  epochs: 50
+  batch_size: 32
+  learning_rate: 0.001
+  early_stopping_patience: 7
+  random_seed: 42
+  validation_split: 0.15
+  test_split: 0.15
+  speaker_independent: true
+
+# Output
+output:
+  artifacts_dir: artifacts/
+  reports_dir: reports/
+  checkpoint: artifacts/best_model.pt
+  baseline_checkpoint: artifacts/baseline_cnn.pt
+  evaluation_results: reports/evaluation_results.json

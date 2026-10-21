@@ -1,0 +1,14 @@
+{
+  "sample_rate": 22050,
+  "n_mfcc": 40,
+  "n_fft": 2048,
+  "hop_length": 512,
+  "max_time_steps": 216,
+  "use_delta": true,
+  "use_delta2": true,
+  "silence_threshold_db": -60.0,
+  "min_duration": 0.5,
+  "max_duration": 10.0,
+  "version": "1.0.0",
+  "feature_dim": 120
+}
