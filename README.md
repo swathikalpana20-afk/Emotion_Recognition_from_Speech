@@ -35,6 +35,34 @@ speach recoginition/
     ├── scripts/                 # Standalone CLI tools (prepare_dataset.py, train.py)
     ├── docs/                    # Architecture and dataset documentation
     └── data/                    # Datasets folder (ravdess, tess, emodb)
+├── emotionai/
+│   ├── backend/                 # FastAPI backend application
+│   │   ├── app/
+│   │   │   ├── core/            # Configuration and hyperparameters
+│   │   │   ├── ml/              # Preprocessing (MFCC), PyTorch models, and dataset parsers
+│   │   │   ├── schemas/         # Pydantic request and response schemas
+│   │   │   ├── services/        # Audio inference and asynchronous background training
+│   │   │   ├── utils/           # Audio utilities and helpers
+│   │   │   └── main.py          # FastAPI application routes and middleware
+│   │   ├── tests/               # 32 automated unit and integration tests
+│   │   ├── pytest.ini           # Pytest configuration
+│   │   └── requirements.txt     # Python backend dependencies
+│   ├── frontend/                # React + TypeScript + Vite frontend
+│   │   ├── src/
+│   │   │   ├── components/      # UI components (Navbar, navigation)
+│   │   │   ├── pages/           # Dashboard, Analyze Studio, Model Insights, Training Lab
+│   │   │   ├── services/        # Axios API client
+│   │   │   ├── hooks/           # Custom audio recording and data fetching hooks
+│   │   │   ├── types/           # TypeScript API models
+│   │   │   ├── index.css        # Dark mode glassmorphism design system
+│   │   │   └── App.tsx          # Application router
+│   │   ├── package.json         # Frontend dependencies (React, Recharts, Lucide, Axios)
+│   │   └── vite.config.ts       # Vite bundler config with backend proxy
+│   ├── configs/                 # YAML configuration files (ravdess.yaml, tess.yaml)
+│   ├── scripts/                 # Standalone CLI tools (prepare_dataset.py, train.py)
+│   ├── docs/                    # Architecture and dataset documentation
+│   └── data/                    # Datasets folder (ravdess, tess, emodb)
+└── README.md
 ```
 
 ---
@@ -51,6 +79,7 @@ speach recoginition/
 
 ### A. Backend Setup
 From the repository root, navigate to `emotionai/backend`:
+From the repository root, open PowerShell and navigate to `emotionai/backend`:
 
 ```powershell
 cd "c:\Users\Swathi Sri\OneDrive\Desktop\speach recoginition\emotionai\backend"
@@ -59,6 +88,7 @@ pip install -r requirements.txt
 
 ### B. Frontend Setup
 From the repository root, navigate to `emotionai/frontend`:
+From the repository root, open PowerShell and navigate to `emotionai/frontend`:
 
 ```powershell
 cd "c:\Users\Swathi Sri\OneDrive\Desktop\speach recoginition\emotionai\frontend"
@@ -83,6 +113,13 @@ pytest -v
 ## 5. Starting the Application
 
 To run the full stack, start both the backend and frontend servers in separate PowerShell terminals.
+*Result: 32 tests passing out of 32.*
+
+---
+
+## 5. Starting the Application (Exact PowerShell Commands)
+
+To run the application, open two separate Windows PowerShell windows:
 
 ### Terminal 1: Start FastAPI Backend
 ```powershell
@@ -92,6 +129,7 @@ python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
 - **Backend API**: `http://127.0.0.1:8000`
 - **Interactive Swagger Docs**: `http://127.0.0.1:8000/docs`
 - **API Health Check**: `http://127.0.0.1:8000/api/health`
+- **Health Check**: `http://127.0.0.1:8000/api/health`
 
 ### Terminal 2: Start React Frontend
 ```powershell
@@ -124,6 +162,7 @@ cd "c:\Users\Swathi Sri\OneDrive\Desktop\speach recoginition\emotionai"
 python scripts/train.py --dataset ravdess --epochs 30 --batch-size 32 --model cnn_bilstm
 ```
 Trained model checkpoints are automatically saved to `artifacts/best_model.pt` and evaluation metrics to `artifacts/evaluation_results.json`.
+Trained model checkpoints are saved to `artifacts/best_model.pt` and metrics to `artifacts/evaluation_results.json`.
 
 ---
 
